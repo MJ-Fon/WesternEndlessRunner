@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+
     public GameObject Obstacle;
     public float maxX;
     public float minX;
