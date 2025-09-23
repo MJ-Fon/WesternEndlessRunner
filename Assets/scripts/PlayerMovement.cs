@@ -16,6 +16,18 @@ public class PlayerMovement : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         {
             Player.transform.Translate(Speed, 0, 0);
         }
+
+        // Keyboard input
+        float horizontal = 0f;
+        if (Input.GetKey(KeyCode.A))
+            horizontal = -1f;
+        if (Input.GetKey(KeyCode.D))
+            horizontal = 1f;
+
+        if (horizontal != 0)
+        {
+            Player.transform.Translate(horizontal * Speed * Time.deltaTime, 0, 0);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
