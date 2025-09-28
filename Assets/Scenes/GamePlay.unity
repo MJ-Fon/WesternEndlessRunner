@@ -780,7 +780,6 @@ Transform:
   - {fileID: 167528550}
   - {fileID: 1518759505}
   - {fileID: 1338350350}
-  - {fileID: 690225831}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -824,6 +823,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DistanceText: {fileID: 2010942101}
   CoinText: {fileID: 584960107}
+  SumText: {fileID: 0}
+  distanceMultiplier: 1
 --- !u!1 &397899559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,9 +1164,8 @@ GameObject:
   - component: {fileID: 584960105}
   - component: {fileID: 584960108}
   - component: {fileID: 584960107}
-  - component: {fileID: 584960106}
   m_Layer: 5
-  m_Name: Score (1)
+  m_Name: Coint txt counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,27 +1184,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1071559294}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 364, y: 465}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &584960106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584960104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6bd2f9c83f70fc468f292a545d7c9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DistanceText: {fileID: 0}
-  CoinText: {fileID: 584960107}
 --- !u!114 &584960107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,56 +1615,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629755013}
   m_CullTransparentMesh: 1
---- !u!1 &690225830
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 690225831}
-  - component: {fileID: 690225832}
-  m_Layer: 0
-  m_Name: SpawnPoint 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &690225831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690225830}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 373081219}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &690225832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690225830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513d06296d31261478de0a440e726b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Obstacle: {fileID: 5302146547551994403, guid: 1cf04779d1c57e3438de89d594060c19, type: 3}
-  maxX: -2.4
-  minX: 2.4
-  maxY: 3.5
-  minY: 3.5
-  TimeBetweenSpawn: 1.2
 --- !u!1 &782444307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,9 +2233,9 @@ RectTransform:
   - {fileID: 105738822}
   - {fileID: 79832011}
   - {fileID: 2010942099}
+  - {fileID: 584960105}
   - {fileID: 2055651392}
   - {fileID: 1671556921}
-  - {fileID: 584960105}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2693,12 +2629,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513d06296d31261478de0a440e726b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacle: {fileID: 5832502668117080288, guid: b649af97bded2b547ba9bcb763e1aed0, type: 3}
-  maxX: -2.4
+  Obstacles:
+  - {fileID: 5832502668117080288, guid: b649af97bded2b547ba9bcb763e1aed0, type: 3}
+  - {fileID: 5302146547551994403, guid: 1cf04779d1c57e3438de89d594060c19, type: 3}
+  Coin: {fileID: 6533314674803546275, guid: 22fc7937a4c916c4e9ce3a0ac6a262fc, type: 3}
   minX: 2.4
-  maxY: 3.5
-  minY: 3.5
-  TimeBetweenSpawn: 1.5
+  maxX: -2.4
+  spawnY: 10
+  startSpawnDelay: 2
+  minSpawnDelay: 0.5
+  difficultyRampUp: 60
 --- !u!4 &1338350350
 Transform:
   m_ObjectHideFlags: 0
@@ -3345,6 +3285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DistanceText: {fileID: 0}
   CoinText: {fileID: 0}
+  SumText: {fileID: 1651023317}
+  distanceMultiplier: 1
 --- !u!114 &1651023317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3610,7 +3552,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1071559294}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3941,9 +3883,8 @@ GameObject:
   - component: {fileID: 2010942099}
   - component: {fileID: 2010942102}
   - component: {fileID: 2010942101}
-  - component: {fileID: 2010942100}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Score txt counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3969,20 +3910,6 @@ RectTransform:
   m_AnchoredPosition: {x: 257, y: 585}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2010942100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010942098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6bd2f9c83f70fc468f292a545d7c9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DistanceText: {fileID: 2010942101}
-  CoinText: {fileID: 584960107}
 --- !u!114 &2010942101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4284,7 +4211,7 @@ RectTransform:
   m_Children:
   - {fileID: 1265200593}
   m_Father: {fileID: 1071559294}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

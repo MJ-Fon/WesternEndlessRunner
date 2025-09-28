@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     bool isPressed = false;
-    public float Speed;
+    public float Speed = 5f;
     public GameObject Player;
 
     // Update is called once per frame
@@ -18,10 +18,16 @@ public class PlayerMovement : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         }
 
         // Keyboard input
+        // float horizontal = 0f;
+        //if (Input.GetKey(KeyCode.A))
+        //   horizontal = -1f;
+        // if (Input.GetKey(KeyCode.D))
+        //   horizontal = 1f;
         float horizontal = 0f;
-        if (Input.GetKey(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             horizontal = -1f;
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             horizontal = 1f;
 
         if (horizontal != 0)
