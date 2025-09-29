@@ -23,6 +23,22 @@ public class HighScoreManager : MonoBehaviour
 
     public void AddRun(string playerName, int distance, int coins)
     {
+        RunData newRun = new RunData(
+            playerName,
+            distance,
+            coins,
+            distance + coins
+        );
+
+        runs.Add(newRun);
+
+        runs = runs.OrderByDescending(r => r.totalScore).ToList();
+        if (runs.Count > 10)
+            runs = runs.Take(10).ToList();
+    }
+    /*
+    public void AddRun(string playerName, int distance, int coins)
+    {
         RunData newRun = new RunData
         {
             playerName = playerName,
@@ -37,4 +53,5 @@ public class HighScoreManager : MonoBehaviour
         if (runs.Count > 10)
             runs = runs.Take(10).ToList();
     }
+    */
 }

@@ -12,7 +12,6 @@ public class RunData
         public int coins;
         public int totalScore; // distance + coins
 
-    /*
     public RunData(string name, int distance, int coins, int totalScore)
     {
         this.playerName = name;
@@ -20,6 +19,5 @@ public class RunData
         this.coins = coins;
         this.totalScore = totalScore;
     }
-    */
 
 }

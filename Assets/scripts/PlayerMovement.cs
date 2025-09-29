@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour, IPointerUpHandler, IPointerDownHand
         if (isPressed)
         {
             Player.transform.Translate(Speed, 0, 0);
+            
         }
 
         // Keyboard input

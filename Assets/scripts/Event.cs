@@ -19,7 +19,12 @@ public class Event : MonoBehaviour
     {
         SceneManager.LoadScene("Leaderboard");
     }
+    //Settings
 
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
     public void Quit()
     {
         Application.Quit();
